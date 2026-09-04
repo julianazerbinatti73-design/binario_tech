@@ -1,0 +1,12 @@
+==============================================
+ AUDITORIA COMPLETA - BINARIO TECH
+ Data: Sat Aug 15 02:36:12 AM UTC 2026
+==============================================
+
+[1] GET /api/v1/telemetria/scania
+{"erro":"Módulo ou rota de telemetria não encontrada."}
+HTTP_STATUS:404
+
+==============================================
+ AUDITORIA FINALIZADA
+==============================================

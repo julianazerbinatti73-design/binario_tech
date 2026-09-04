@@ -1,0 +1,46 @@
+Teste de segurança
+Tentativa 1 sem chave
+HTTP/1.1 401 Unauthorized
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 73
+ETag: W/"49-VocKX6oX/pI0y+4oQzHnxXXilzU"
+Date: Fri, 07 Aug 2026 23:01:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"erro":"Acesso nao autorizado. Header 'X-API-KEY' invalido ou ausente."}Tentativa 2 sem chave
+HTTP/1.1 401 Unauthorized
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 73
+ETag: W/"49-VocKX6oX/pI0y+4oQzHnxXXilzU"
+Date: Fri, 07 Aug 2026 23:01:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"erro":"Acesso nao autorizado. Header 'X-API-KEY' invalido ou ausente."}Tentativa 3 sem chave
+HTTP/1.1 401 Unauthorized
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 73
+ETag: W/"49-VocKX6oX/pI0y+4oQzHnxXXilzU"
+Date: Fri, 07 Aug 2026 23:01:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"erro":"Acesso nao autorizado. Header 'X-API-KEY' invalido ou ausente."}Tentativa com chave valida
+HTTP/1.1 400 Bad Request
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 63
+ETag: W/"3f-4JAszE+BiD6aAWcUusqzPkiHNSk"
+Date: Fri, 07 Aug 2026 23:01:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"erro":"Campos 'nome', 'cnh' e 'categoria' sao obrigatorios."}

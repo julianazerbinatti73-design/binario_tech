@@ -1,0 +1,34 @@
+========================================
+ AUDITORIA DE TELEMETRIA - BINARIO TECH 
+ data/hora: Fri Aug 21 12:44:04 PM UTC 2026
+========================================
+
+[1] Testando Rota Scania...
+{
+  "montadora": "Scania",
+  "modelo": "R450",
+  "status": "OK",
+  "conexao": true,
+  "velocidade_media": 82
+}
+
+[2] Testando Rota Mercedez-Benz...
+{
+  "montadora": "Mercedes-Benz",
+  "modelo": "Actros",
+  "status": "OK",
+  "conexao": true,
+  "velocidade_media": 78
+}
+
+[3] Testando Rota Wolswagen...
+{
+  "montadora": "Volkswagen",
+  "modelo": "Delivery",
+  "status": "ALERTA",
+  "conexao": false,
+  "velocidade_media": 0
+}
+
+----------------------------------------
+Auditoria finalizada com sucesso!

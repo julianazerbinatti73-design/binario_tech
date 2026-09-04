@@ -1,0 +1,4 @@
+{"id":3,"placa":"AAA-1111","montadora":"Volvo","modelo":"FH","status":"DISPONIVEL"}
+{"id":4,"placa":"BBB-2222","montadora":"Scania","modelo":"P320","status":"DISPONIVEL"}
+{"mensagem":"Veiculo atualizado com sucesso!","veiculo":{"id":1,"placa":"AAA-9999","montadora":"Volvo","modelo":"FH16","status":"DISPONIVEL"}}
+{"mensagem":"Veiculo ID 2 removido com sucesso."}
