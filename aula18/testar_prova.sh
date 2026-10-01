@@ -1,25 +1,52 @@
+
 #!/bin/bash
+
+URL="http://localhost:3018"
+EMAIL="aluno_teste_$(date +%s)@teste.com"
+SENHA="123456"
+
 echo "========================================"
-echo " AUDITORIA DE AUTENTICAÇÃO JWT - AULA 18"
-echo " ======================================="
+echo " TESTE DA AVALIAÇÃO PRÁTICA - AULA 18"
+echo "========================================"
 
-echo -e "\n[1] Registrando novo Usuario Operador ... "
-curl -s -X POST http://localhost:3018/api/v1/auth/register \
- -H "Content-Type: application/json" \
- -d '{ "email": "operador@binariotech.com.br", "senha": "SenhaSegura123!", "perfil": "ADMIN" }' | jq .
+echo ""
+echo "[1] Cadastrando usuário..."
 
-echo -e "\n[2] Realizando Login e obtendo JWT ... "
-LOGIN_RESP=$(curl -s -X POST http://localhost:3018/api/v1/auth/login \
- -H "Content-Type: application/json" \
- -d '{ "email": "operador@binariotech.com.br", "senha": "SenhaSegura123!" }')
+CADASTRO=$(curl -s -X POST "$URL/api/v1/prova/register" \
+    -H "Content-Type: application/json" \
+    -d "{\"email\":\"$EMAIL\",\"senha\":\"$SENHA\"}")
 
-echo $LOGIN_RESP | jq .
+echo "$CADASTRO" | jq .
 
-TOKEN=$(echo $LOGIN_RESP | jq -r '.token')
+echo ""
+echo "[2] Realizando login..."
 
-echo -e "\n[3] Tentando acessar Rota Protegida SEM Token (Esperado HTTP 401)... "
-curl -s http://localhost:3018/api/v1/auth/perfil | jq .
+LOGIN=$(curl -s -X POST "$URL/api/v1/prova/login" \
+    -H "Content-Type: application/json" \
+    -d "{\"email\":\"$EMAIL\",\"senha\":\"$SENHA\"}")
 
-echo -e "\n[4] Acessando Rota Protegida COM Token JWT Valido (Esperado HTTP 200)... "
-curl -s http://localhost:3018/api/v1/auth/perfil \
- -H "Authorization: Bearer $TOKEN" | jq .
+echo "$LOGIN" | jq .
+
+TOKEN=$(echo "$LOGIN" | jq -r '.token')
+
+if [ "$TOKEN" = "null" ] || [ -z "$TOKEN" ]; then
+    echo ""
+    echo "ERRO: não foi possível obter o token JWT."
+    exit 1
+fi
+
+echo ""
+echo "[3] Token obtido com sucesso."
+echo "Token: $TOKEN"
+
+echo ""
+echo "[4] Acessando rota protegida..."
+
+curl -s -X GET "$URL/api/v1/prova/relatorio" \
+    -H "Authorization: Bearer $TOKEN" | jq .
+
+echo ""
+echo "========================================"
+echo " TESTE FINALIZADO"
+echo "========================================"
+

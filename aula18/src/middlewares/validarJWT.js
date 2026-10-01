@@ -1,26 +1,41 @@
-const jwt = require(' jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
-const autenticarToken = (req, res, next) => {
-const authHeader = req. headers['authorization'];
-const token = authHeader && authHeader.split(' ')[1];
+const validarJWT = (req, res, next) => {
+  const authHeader = req.headers.authorization;
 
-if (!token) {
-return res. status(401). json({
-status: "ERRO"
-mensagem: "Acesso negado. Token não fornecido."
+  if (!authHeader) {
+    return res.status(401).json({
+      erro: 'Token não informado'
+    });
+  }
 
-try {
-const usuarioVerificado = jwt.verify(token, process.env. JWT_SECRET);
-req. usuario = usuarioVerificado;
-next();
-} catch (erro) {
-if (erro.name === 'TokenExpiredError') {
-return res. status(403). json({
-status: "ERRO"
-mensagem: "Token expirado. "
+  const partes = authHeader.split(' ');
 
-return res. status(403). json({
-status: "ERRO"
-mensagem: "Token inválido."
+  if (
+    partes.length !== 2 ||
+    partes[0] !== 'Bearer'
+  ) {
+    return res.status(403).json({
+      erro: 'Token inválido'
+    });
+  }
 
-module.exports = autenticarToken;
+  const token = partes[1];
+
+  try {
+    const decoded = jwt.verify(
+      token,
+      process.env.JWT_SECRET
+    );
+
+    req.usuario = decoded;
+
+    next();
+  } catch (error) {
+    return res.status(403).json({
+      erro: 'Token inválido ou expirado'
+    });
+  }
+};
+
+module.exports = validarJWT;
