@@ -1,15 +1,42 @@
 ========================================
        TESTE CRUD - BINARIO TECH
-        Data/Hora: qui 15 out 2026 13:25:17 -03
+        Data/Hora: qui 15 out 2026 14:10:34 -03
 ========================================
 
 [1] CADASTRANDO VEICULO 1...
+{
+  "id": 3,
+  "placa": "AAA-2026",
+  "montadora": "Scania",
+  "modelo": "R500",
+  "status": "DISPONIVEL"
+}
 
 [2] CADASTRANDO VEICULO 2...
+{
+  "id": 4,
+  "placa": "BBB-2026",
+  "montadora": "Mercedes-Benz",
+  "modelo": "Actros",
+  "status": "DISPONIVEL"
+}
 
-[3] ATUALIZANDO VEICULO ...
+[3] ATUALIZANDO VEICULO 3...
+{
+  "mensagem": "Status atualizado com sucesso!",
+  "veiculo": {
+    "id": 3,
+    "placa": "AAA-2026",
+    "montadora": "Scania",
+    "modelo": "R500",
+    "status": "EM_ROTA"
+  }
+}
 
-[4] DELETANDO VEICULO ...
+[4] DELETANDO VEICULO 4...
+{
+  "mensagem": "Veiculo ID 4 removido com sucesso."
+}
 
 ========================================
        CRUD FINALIZADO

@@ -1,0 +1,99 @@
+=== AUDITORIA DE SEGURANCA ===
+
+1. Acesso sem API Key (esperado: 401)
+HTTP/1.1 401 Unauthorized
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 73
+ETag: W/"49-VocKX6oX/pI0y+4oQzHnxXXilzU"
+Date: Thu, 22 Oct 2026 14:36:40 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"erro":"Acesso nao autorizado. Header 'X-API-KEY' invalido ou ausente."}
+2. API Key invalida (esperado: 401)
+HTTP/1.1 401 Unauthorized
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 73
+ETag: W/"49-VocKX6oX/pI0y+4oQzHnxXXilzU"
+Date: Thu, 22 Oct 2026 14:36:40 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"erro":"Acesso nao autorizado. Header 'X-API-KEY' invalido ou ausente."}
+3. CNH invalida (esperado: 400)
+HTTP/1.1 400 Bad Request
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 61
+ETag: W/"3d-vfbVuZlu2gkZDh4tTmAG1IYSNa4"
+Date: Thu, 22 Oct 2026 14:36:40 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"erro":"A CNH deve conter exatamente 11 digitos numericos."}
+4. Rota inexistente (esperado: 404)
+HTTP/1.1 404 Not Found
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 60
+ETag: W/"3c-FaN9AmZqjke1FsAm8K/UB0+2Oc8"
+Date: Thu, 22 Oct 2026 14:36:40 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"erro":"Endpoint nao encontrado no servidor Binario Tech."}
+5. Consultar motoristas (esperado: 200)
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 475
+ETag: W/"1db-7nH8KvUKoHsWr2wkRXaKbxRBFSA"
+Date: Thu, 22 Oct 2026 14:36:40 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+[{"id":1,"nome":"Carlos Silva","cnh":"12345678900","categoria":"E","ativo":true},{"id":2,"nome":"Ana Pereira","cnh":"98765432100","categoria":"D","ativo":true},{"id":3,"nome":"João Silva","cnh":"12345678900","categoria":"E","ativo":true},{"id":4,"nome":"João Silva","cnh":"12345678900","categoria":"E","ativo":true},{"id":5,"nome":"João Silva","cnh":"12345678900","categoria":"E","ativo":true},{"id":6,"nome":"Joao Silva","cnh":"12345678900","categoria":"E","ativo":true}]
+6. Cadastrar motorista (esperado: 201)
+HTTP/1.1 201 Created
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 77
+ETag: W/"4d-lTN0llLkqzV+qTVloVzmJWfFKLw"
+Date: Thu, 22 Oct 2026 14:36:40 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"id":7,"nome":"Joao Silva","cnh":"12345678900","categoria":"E","ativo":true}
+7. Consultar manutencoes (esperado: 200)
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 217
+ETag: W/"d9-cTiflgZ7/UGHWCWm5kPhFTgccEI"
+Date: Thu, 22 Oct 2026 14:36:40 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+[{"id":1,"caminhao":"Caminhao 01","descricao":"Troca de oleo e filtros","valor":850,"status":"ORCAMENTO"},{"id":2,"caminhao":"Caminhao 02","descricao":"Revisao do sistema de freios","valor":1200,"status":"ORCAMENTO"}]
+8. Cadastrar manutencao (esperado: 201)
+HTTP/1.1 400 Bad Request
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 69
+ETag: W/"45-vfdS/1bV+WY8HZsPUgvNFc9xb60"
+Date: Thu, 22 Oct 2026 14:36:40 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"erro":"Campos 'caminhao', 'descricao' e 'valor' sao obrigatorios."}
+=== AUDITORIA CONCLUIDA ===
